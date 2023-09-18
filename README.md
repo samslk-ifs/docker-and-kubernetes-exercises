@@ -51,28 +51,28 @@ A few Docker and Kubernetes Exercises for a beginner.
 - What did you see in the output?
 - Run the same command again. Did the output differ? If so, why?
 
-#### Hints
-
-- BusyBox is a pre-built Docker image that runs a Linux box, available in the Docker Hub. Its image name is `busybox`.
-- You can run any image by using this command:
-    - `docker run imagename`
-- You can provide a command to be run as well, in which case the syntax is:
-    - `docker run imagename command`
-- You can print "Hello World" in a Linux terminal like so:
-    - `echo Hello World`
+> #### Hints
+> 
+> - BusyBox is a pre-built Docker image that runs a Linux box, available in the Docker Hub. Its image name is `busybox`.
+> - You can run any image by using this command:
+>     - `docker run imagename`
+> - You can provide a command to be run as well, in which case the syntax is:
+>     - `docker run imagename command`
+> - You can print "Hello World" in a Linux terminal like so:
+>     - `echo Hello World`
 
 
 ### Exercise 01.2: Containers with interactive terminal
 
 - Run an Ubuntu container with an interactive terminal.
 
-#### Hints
-
-- Ubuntu is available in Docker Hub and its image name is `ubuntu`.
-- `docker run` accepts flags.
-    - `-it` is shorthand for `-i -t`.
-    - `-i` tells Docker to connect us to the container's standard input.
-    - `-t` tells Docker that we want a pseudo-terminal.
+> #### Hints
+> 
+> - Ubuntu is available in Docker Hub and its image name is `ubuntu`.
+> - `docker run` accepts flags.
+>     - `-it` is shorthand for `-i -t`.
+>     - `-i` tells Docker to connect us to the container's standard input.
+>     - `-t` tells Docker that we want a pseudo-terminal.
 
 
 ### Exercise 01.2: Install a software in our container
@@ -85,15 +85,15 @@ A few Docker and Kubernetes Exercises for a beginner.
     - How many packages were installed in your container after you installed figlet?
 - What happens when you restart the container and run the command again?
 
-#### Hints
-
-- In Ubuntu, as well as many other Debian based Linux distributions, software come in so called Debian Packages.
-- `apt` is a command in Ubuntu that can manipulate packages installed.
-- `apt update` updates the cache of available packages list.
-- `apt install packagename` installs a package with the name `packagename`.
-- `dpkg -l` lists the packages installed in our container.
-- `wc -l` counts the number of lines in a file (or standard input, if a file is not given).
-- `command 1 | command 2` in a bash shell runs the first command and pipes the output to the 2nd.
+> #### Hints
+> 
+> - In Ubuntu, as well as many other Debian based Linux distributions, software come in so called Debian Packages.
+> - `apt` is a command in Ubuntu that can manipulate packages installed.
+> - `apt update` updates the cache of available packages list.
+> - `apt install packagename` installs a package with the name `packagename`.
+> - `dpkg -l` lists the packages installed in our container.
+> - `wc -l` counts the number of lines in a file (or standard input, if a file is not given).
+> - `command 1 | command 2` in a bash shell runs the first command and pipes the output to the 2nd.
 
 
 ### Exercise 01.3: Run a non-interactive container
@@ -101,12 +101,12 @@ A few Docker and Kubernetes Exercises for a beginner.
 - Run image `sampathsris/clock`. What does it display?
 - Terminate the container.
 
-#### Hints
-
-- Users can upload images to the docker hub, and then other users can use those images. Docker automatically downloads these images if you know the image's name.
-- In this case, the image full name is required to run it with docker run.
-- Image full name would be `username/imagename`.
-- In Linux/Unix, you can usually terminate a program by sending `SIGINT` (Interrupt Signal). In command line, this is done by pressing `Ctrl^C`.
+> #### Hints
+> 
+> - Users can upload images to the docker hub, and then other users can use those images. Docker automatically downloads these images if you know the image's name.
+> - In this case, the image full name is required to run it with docker run.
+> - Image full name would be `username/imagename`.
+> - In Linux/Unix, you can usually terminate a program by sending `SIGINT` (Interrupt Signal). In command line, this is done by pressing `Ctrl^C`.
 
 
 ### Exercise 01.4: Run a container in the background
@@ -119,13 +119,13 @@ A few Docker and Kubernetes Exercises for a beginner.
 - Try viewing the last few lines of logs.
 - Try making docker show the last line of logs, and then keep on displaying new lines in real time.
 
-#### Hints
-
-- `-d` flag to `docker run` runs a container as a daemon (i.e. in the background).
-- `docker ps` will list all the running containers and information about them, including the container ID.
-- `docker logs <container_id/prefix>` will show the logged output of a container.
-- See what `docker logs --tail 5 <container_id/prefix>` does. What happens when you change `5` to `10`?
-- See what `docker logs –tail 1 --follow` does.
+> #### Hints
+> 
+> - `-d` flag to `docker run` runs a container as a daemon (i.e. in the background).
+> - `docker ps` will list all the running containers and information about them, including the container ID.
+> - `docker logs <container_id/prefix>` will show the logged output of a container.
+> - See what `docker logs --tail 5 <container_id/prefix>` does. What happens when you change `5` to `10`?
+> - See what `docker logs –tail 1 --follow` does.
 
 
 ### Exercise 01.5: Stop or kill a container running in the background
@@ -136,11 +136,11 @@ A few Docker and Kubernetes Exercises for a beginner.
 - Check if containers are still running.
 - List all the containers which are running or terminated.
 
-#### Hints
-
-- `docker stop` and `docker kill` will help you. Both commands accept a container ID as an argument.
-- We learned how to list running containers in the previous exercise.
-- `docker ps` accepts a `-a` flag. See what it does.
+> #### Hints
+> 
+> - `docker stop` and `docker kill` will help you. Both commands accept a container ID as an argument.
+> - We learned how to list running containers in the previous exercise.
+> - `docker ps` accepts a `-a` flag. See what it does.
 
  
 ## Exercise 02: Naming and labeling
@@ -151,13 +151,13 @@ A few Docker and Kubernetes Exercises for a beginner.
 - Run `docker ps` to show their details.
 - Without using the ID of the container, get logs and stop the containers.
 
-#### Hints
-
-- Most of the docker commands (such as `run`, `stop`, `start`) accept a parameter that identifies the container. This identification could either be,
-    - The container ID: a random 256-bit integer, which is shown in the docker client as a 64-character hex string (e.g.: `d47d10bcd8c8bee5c96990dcccbf2d0edb3cada862102f1cadbf8932b7e2497e`)
-    - Any unambiguous prefixes of the container ID above. (e.g. `d47d10bcd8c8`, `d47d`, `d4`).
-    - The container name: a human-readable name provided automatically by docker for each container (e.g.: `festive_elgamal`). This is a combination of a randomly chosen adjective and a noun.
-- You can also provide the container name with the `--name <container_name>` switch when you do `docker run`.
+> #### Hints
+> 
+> - Most of the docker commands (such as `run`, `stop`, `start`) accept a parameter that identifies the container. This identification could either be,
+>     - The container ID: a random 256-bit integer, which is shown in the docker client as a 64-character hex string (e.g.: `d47d10bcd8c8bee5c96990dcccbf2d0edb3cada862102f1cadbf8932b7e2497e`)
+>     - Any unambiguous prefixes of the container ID above. (e.g. `d47d10bcd8c8`, `d47d`, `d4`).
+>     - The container name: a human-readable name provided automatically by docker for each container (e.g.: `festive_elgamal`). This is a combination of a randomly chosen adjective and a noun.
+> - You can also provide the container name with the `--name <container_name>` switch when you do `docker run`.
 
 
 ### Exercise 02.2: Container renaming
@@ -166,10 +166,10 @@ A few Docker and Kubernetes Exercises for a beginner.
 - Run the same image once again and try to give it the same name. What does happen?
 - Rename the container named `my_clock` to `myclock`.
 
-#### Hints
-
-- `docker run` accepts a `--name <containername>` flag.
-- See what `docker help rename` says.
+> #### Hints
+> 
+> - `docker run` accepts a `--name <containername>` flag.
+> - See what `docker help rename` says.
 
 
 ### Exercise 02.3: Inspecting a container
@@ -178,16 +178,16 @@ A few Docker and Kubernetes Exercises for a beginner.
 - The output is too big. Try to use a Linux command to read it one screenful at a time.
 - Print the created datetime and the image name of the container.
 
-#### Hints
-
-- Linux command `vim` and `less` could be used to read a file.
-- You can also pipe output from other commands to `vim` and `less`.
-- Output of docker inspect is a JSON object.
-- You can pick and choose portions of this JSON object for output by using the `--format` flag to docker inspect.
-- `--format` flag requires a format string. Within this string you can specify which properties of the object to choose by adding double curly brackets (`{{}}`).
-- See the following guide for more info:
-    - [https://docs.docker.com/engine/reference/commandline/inspect/#get-a-subsection-in-json-format](https://docs.docker.com/engine/reference/commandline/inspect/#get-a-subsection-in-json-format)
-- Within this object you will find properties such as `Created` and `Config`. You will also find the property `Image` under `Config`.
+> #### Hints
+> 
+> - Linux command `vim` and `less` could be used to read a file.
+> - You can also pipe output from other commands to `vim` and `less`.
+> - Output of docker inspect is a JSON object.
+> - You can pick and choose portions of this JSON object for output by using the `--format` flag to docker inspect.
+> - `--format` flag requires a format string. Within this string you can specify which properties of the object to choose by adding double curly brackets (`{{}}`).
+> - See the following guide for more info:
+>     - [https://docs.docker.com/engine/reference/commandline/inspect/#get-a-subsection-in-json-format](https://docs.docker.com/engine/reference/commandline/inspect/#get-a-subsection-in-json-format)
+> - Within this object you will find properties such as `Created` and `Config`. You will also find the property `Image` under `Config`.
 
 
 ### Exercise 02.4: Labeling containers
@@ -199,11 +199,11 @@ A few Docker and Kubernetes Exercises for a beginner.
 - Run `docker ps` but filter the containers that has the label `type`.
 - Run `docker ps` but filter the containers that has the label `type` which has value `alarm`.
 
-#### Hints
-
-- Labels are used to add arbitrary metadata to containers.
-- Labels are key/value pairs.
-- They can be specified at container creation by specifying the `-l` flag.
+> #### Hints
+> 
+> - Labels are used to add arbitrary metadata to containers.
+> - Labels are key/value pairs.
+> - They can be specified at container creation by specifying the `-l` flag.
 
 
 ## Exercise 03: Looking inside the containers
@@ -218,10 +218,10 @@ A few Docker and Kubernetes Exercises for a beginner.
 - From the shell, run command `ps`. What do you make of the output?
 - Stop the container and using the same technique above, try to get a shell in the stopped container. Why do you think it fails?
 
-#### Hints
-
-- `sampathsris/clock` is based on `busybox`. The command `sh` exists inside `busybox`, and available for `sampathsris/clock`.
-- `docker exec` executes a command inside a running container. Like `docker run`, it also accepts `-i` and `-t` flags.
+> #### Hints
+> 
+> - `sampathsris/clock` is based on `busybox`. The command `sh` exists inside `busybox`, and available for `sampathsris/clock`.
+> - `docker exec` executes a command inside a running container. Like `docker run`, it also accepts `-i` and `-t` flags.
 
 
 ### Exercise 03.2: Getting inside stopped containers
@@ -231,8 +231,9 @@ A few Docker and Kubernetes Exercises for a beginner.
 - We cannot open a shell as the container has exited. Check if there are any filesystem changes in the container. it should show you a log file.
 - Copy the log file to the working directory of your shell.
 
-#### Hints
-
-- `docker ps` accepts a `-l` flag and shows the last run container.
-- `docker diff` will show you what changes has happened to the container's file system.
-- `docker cp` will copy files between container's file system and the host filesystem.
+> #### Hints
+> 
+> - `docker ps` accepts a `-l` flag and shows the last run container.
+> - `docker diff` will show you what changes has happened to the container's file system.
+> - `docker cp` will copy files between container's file system and the host filesystem.
+> 

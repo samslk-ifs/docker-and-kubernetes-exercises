@@ -204,3 +204,35 @@ A few Docker and Kubernetes Exercises for a beginner.
 - Labels are used to add arbitrary metadata to containers.
 - Labels are key/value pairs.
 - They can be specified at container creation by specifying the `-l` flag.
+
+
+## Exercise 03: Looking inside the containers
+
+### Exercise 03.1: Getting a shell inside the container
+
+- Run a container of `sampathsris/clock` if one is not already running.
+- Rn an `sh` shell inside the running container.
+- From the shell, try to view the script at `/script.sh`.
+- Find your local machine's IP address and `ping` this address from the shell.
+- From the shell, try pinging to `google.com`.
+- From the shell, run command `ps`. What do you make of the output?
+- Stop the container and using the same technique above, try to get a shell in the stopped container. Why do you think it fails?
+
+#### Hints
+
+- `sampathsris/clock` is based on `busybox`. The command `sh` exists inside `busybox`, and available for `sampathsris/clock`.
+- `docker exec` executes a command inside a running container. Like `docker run`, it also accepts `-i` and `-t` flags.
+
+
+### Exercise 03.2: Getting inside stopped containers
+
+- Try running a container of `sampathsris/crashme` interactively. Notice that it fails.
+- Check if the last run container is running. Notice that it has exited.
+- We cannot open a shell as the container has exited. Check if there are any filesystem changes in the container. it should show you a log file.
+- Copy the log file to the working directory of your shell.
+
+#### Hints
+
+- `docker ps` accepts a `-l` flag and shows the last run container.
+- `docker diff` will show you what changes has happened to the container's file system.
+- `docker cp` will copy files between container's file system and the host filesystem.

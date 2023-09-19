@@ -237,3 +237,36 @@ A few Docker and Kubernetes Exercises for a beginner.
 > - `docker diff` will show you what changes has happened to the container's file system.
 > - `docker cp` will copy files between container's file system and the host filesystem.
 > 
+
+
+## Exercise 04: Working with Dockerfiles
+
+### Exercise 04.1: Our first docker image
+
+- Create a directory for this exercise.
+- Inside the directory, create a `Dockerfile`.
+- Edit the `Dockerfile` such that it tells following things to the Docker Engine:
+    - The resulting image is based on `ubuntu` (aka `ubuntu` is the parent image).
+    - As the first layer of changes, the image should synchronize its packages by running `apt update`.
+    - As the next layer of changes, image should install programs `figlet` and `cowsay` by running `apt install figlet cowsay`.
+- Build the docker image and name it `banner`.
+- While the image is building, run a `docker ps` to see if any containers are running. What do you make of what you see? Do you see any relationships between the build process output and the `docker ps` output?
+- Did the build fail? Check if you have any interactive commands and fix them.
+- Once you have successfully built the image, run it with an interactive terminal and try to use programs `figlet` and `cowsay`.
+- Try to build the docker image again. What do you make of the output?
+- Now, change the `Dockerfile` and swap arguments to `apt install` (aka replace it with `apt install cowsay figlet`. You may also need to add some flags as required).
+- Build the docker image again. What do you make of the output?
+
+> #### Hints
+> 
+> - The format of a `Dockerfile` is as follows:
+>   ```Dockerfile
+>   # Comment
+>   INSTRUCTION arguments
+>   ```
+> - The `FROM` instruction specified the parent image, and typically is the very first instruction of the `Dockerfile`.
+> - The `RUN` instruction will run a given command on the parent image and add the resulting filesystem changes to the final image as a layer.
+> - All instructions are executed in the given order, and each instruction creates a layer on top of the previous one.
+> - Any commands executed by `RUN` must be non-interactive. For example, if `apt` tries to confirm if users wants to go ahead with the installation, the `RUN` instruction will fail.
+>   - You can prevent apt from being interactive by adding `-y` flag (aka say "yes" to all questions by default).
+> - You can build docker images with `docker build`. It accepts a `-t` flag for the tag.

@@ -294,3 +294,22 @@ A few Docker and Kubernetes Exercises for a beginner.
 > - If the `PORT` environment variable has a value, the app will try to listen on that port.
 > - Also, if `AGENT` environment variable has a value, the output would change (e.g. if `AGENT=Orange`, then message would be "Orange says: Okay!"). As you can see it defaults to "Unknown Agent".
 
+
+## Exercise 06: Deploying in Kubernetes
+
+0. Get yourself a Kubernetes cluster. It could be the local cluster running on your Docker Desktop.
+1. Create a namespace named `my-namespace` in the cluster.
+    - > Hint: Use `kubectl`.
+2. Delete the namespace.
+3. Create a namespace named `ingress-test` in the cluster. Figure out a way to deploy the `samslk/ingress-experiments-app` image as a pod within the namespace.
+    - > Hint: "deployments".
+4. Find a way to expose the pod using a "service". Expose the service using a "port-forwarding".
+5. Find a way to create 5 replicas of `samslk/ingress-experiments-app` instead of the one pod you created in step 3.
+
+
+## Exercise 07: Helm
+
+In this last setup you came up with, you have five replicas in the same namespace using a single deployment, and a service proxying for all of them.
+ 
+- Find out a way to deploy the deployment and the service together using a helm chart.
+- The helm chart should contain details about both the deployment and the service, and using helm you should be able to deploy both of them using a single command.

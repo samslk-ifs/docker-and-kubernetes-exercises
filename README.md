@@ -270,3 +270,27 @@ A few Docker and Kubernetes Exercises for a beginner.
 > - Any commands executed by `RUN` must be non-interactive. For example, if `apt` tries to confirm if users wants to go ahead with the installation, the `RUN` instruction will fail.
 >   - You can prevent apt from being interactive by adding `-y` flag (aka say "yes" to all questions by default).
 > - You can build docker images with `docker build`. It accepts a `-t` flag for the tag.
+
+
+## Exercise 05: Working with Web-based Apps
+
+### Exercise 05.1: Exposing ports
+
+1. Run an instance of `samslk/ingress-experiments-app`.
+2. This listens on port `8000`. Make sure the app is accessible via a browser.
+ 
+> #### Hints:
+> - See if there is a way to expose ports in `docker run`.
+
+
+### Exercise 05.2
+
+1. Make the app say "Orange says: Okay!".
+2. If previous is successful, make the app listen on port `8080` (instead of `8000`).
+
+
+> #### Hints
+> - When the app that runs inside `samslk/ingress-experiments-app` starts, it looks for two environment variables: `PORT` and `AGENT`.
+> - If the `PORT` environment variable has a value, the app will try to listen on that port.
+> - Also, if `AGENT` environment variable has a value, the output would change (e.g. if `AGENT=Orange`, then message would be "Orange says: Okay!"). As you can see it defaults to "Unknown Agent".
+
